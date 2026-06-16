@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>DOOM : Singularity Ages</title>
+    <style>
+        body { 
+            background-color: #111; display: flex; justify-content: center; 
+            align-items: center; height: 100vh; margin: 0; 
+            font-family: 'Courier New', Courier, monospace; 
+        }
+        
+        #gameContainer { 
+            position: relative; width: 640px; height: 480px; 
+            box-shadow: 0 0 30px #000; 
+        }
+        
+        canvas { background-color: #87CEEB; display: block; }
+
+        /* --- THE INTRO SCREEN STYLING --- */
+        #introScreen {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background-color: rgba(15, 5, 5, 0.95);
+            display: flex; flex-direction: column;
+            justify-content: center; align-items: center;
+            color: #ff0000; z-index: 10;
+        }
+        
+        #introScreen h1 { 
+            font-size: 42px; margin-bottom: 10px; 
+            text-shadow: 2px 2px 10px #ff0000; text-align: center; 
+        }
+        
+        #introScreen p { 
+            font-size: 16px; color: #ffaaaa; margin-bottom: 25px; 
+            text-align: center; line-height: 1.6; 
+        }
+
+        /* --- NEW DIFFICULTY SELECTOR STYLING --- */
+        #difficulty-selector {
+            display: flex; gap: 15px; margin-bottom: 30px;
+        }
+        
+        .diff-btn {
+            background-color: transparent; color: #ffaaaa; 
+            border: 1px solid #ff0000; padding: 8px 20px;
+            font-family: 'Courier New', Courier, monospace;
+            cursor: pointer; font-size: 16px; transition: 0.2s;
+        }
+        
+        .diff-btn:hover { background-color: #330000; }
+        
+        .diff-btn.active {
+            background-color: #ff0000; color: #000; font-weight: bold;
+            box-shadow: 0 0 15px #ff0000;
+        }
+        
+        #startBtn {
+            background-color: #2a0000; color: white;
+            border: 2px solid #ff0000; padding: 15px 40px;
+            font-size: 24px; font-weight: bold; 
+            font-family: 'Courier New', Courier, monospace;
+            cursor: pointer; transition: 0.3s;
+        }
+        
+        #startBtn:hover { 
+            background-color: #ff0000; color: #000; 
+            box-shadow: 0 0 20px #ff0000; 
+        }
+    </style>
+</head>
+<body>
+    
+    <div id="gameContainer">
+        <canvas id="gameCanvas" width="640" height="480"></canvas>
+
+        <div id="introScreen">
+            <h1>DOOM :<br>Singularity Ages</h1>
+            <p>
+                <b>INSTRUCTIONS:</b><br>
+                Use W, A, S, D or Arrows to Move<br>
+                Press <b>'E'</b> for Shooting<br>
+                Hold <b>'SHIFT'</b> to Block
+            </p>
+            
+            <div id="difficulty-selector">
+                <button class="diff-btn" data-kills="1">EASY</button>
+                <button class="diff-btn active" data-kills="3">MEDIUM</button>
+                <button class="diff-btn" data-kills="5">HARD</button>
+            </div>
+
+            <button id="startBtn">START GAME</button>
+        </div>
+    </div>
+
+    <script src="hud.js"></script>
+    <script src="entities.js"></script>
+    <script src="game.js"></script>
+</body>
+</html>
